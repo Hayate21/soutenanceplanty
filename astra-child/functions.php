@@ -25,13 +25,13 @@ add_action( 'wp_enqueue_scripts', 'child_theme_configurator_css', 10 );
 
 //HOOK ADMIN
 
-add_filter('wp_nav_menu_items','add_admin_link',10,2);
+add_filter('wp_nav_menu_items','add_admin_link',10,2);// Ajoute un filtre pour modifier les éléments de menu WordPress
 
-function add_admin_link($items,$args) {
-    if (is_user_logged_in() && $args->theme_location) {
-        $items .= '<li class="admin"><a href="'. admin_url('index.php') .'">Admin</a></li>';
+function add_admin_link($items,$args) {// Définit une fonction pour ajouter un lien administrateur au menu
+    if (is_user_logged_in() && $args->theme_location) {// Vérifie si l'utilisateur est connecté et si la localisation du thème est définie
+        $items .= '<li class="admin"><a href="'. admin_url('index.php') .'">Admin</a></li>';// Ajoute un élément de menu "Admin" à la fin de la liste d'éléments de menu
     }
-    return $items;
+    return $items;// Renvoie les éléments de menu modifiés
 }
 
 
